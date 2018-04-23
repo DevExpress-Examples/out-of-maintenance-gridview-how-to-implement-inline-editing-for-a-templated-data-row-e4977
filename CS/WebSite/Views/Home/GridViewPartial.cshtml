@@ -1,0 +1,109 @@
+﻿@Html.DevExpress().GridView(
+                            settings => {
+                                settings.Name = "gridView";
+                                settings.CallbackRouteValues = new { Controller = "Home", Action = "GridViewPartial" };
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.KeyFieldName = "ID";
+                                settings.Columns.Add
+                                (
+                                    column => {
+                                        column.Caption = "Edit Row";
+                                        column.ReadOnly = true;
+                                        column.Width = System.Web.UI.WebControls.Unit.Percentage(25);
+                                    }
+                                );
+                                settings.Columns.Add
+                                (
+                                    column => {
+                                        column.Caption = "Can Speak";
+                                        column.ReadOnly = true;
+                                        column.Width = System.Web.UI.WebControls.Unit.Percentage(25);
+                                    }
+                                );
+                                settings.Columns.Add
+                                (
+                                    column => {
+                                        column.Caption = "Can Write";
+                                        column.ReadOnly = true;
+                                        column.Width = System.Web.UI.WebControls.Unit.Percentage(25);
+                                    }
+                                );
+                                settings.Columns.Add
+                                (
+                                    column => {
+                                        column.Caption = "Can Understand";
+                                        column.ReadOnly = true;
+                                        column.Width = System.Web.UI.WebControls.Unit.Percentage(25);
+                                    }
+                                );
+
+                                settings.SetDataRowTemplateContent(c => {
+                                    ViewContext.Writer.Write("<table cellpadding='4' cellspacing='0' class='myTable'><tr><td rowspan='2' width='25%'>");
+                                    @Html.DevExpress().HyperLink(link => {
+                                        link.Name = "Edit" + c.VisibleIndex;
+                                        link.Properties.Text = "Edit";
+                                        link.Properties.ClientSideEvents.Click = string.Format("function(s,e){{OnEditButtonClick({0});}}", c.VisibleIndex);
+
+                                    }).Render();
+                                    ViewContext.Writer.Write("<br/>");
+                                    @Html.DevExpress().HyperLink(link => {
+                                        link.Name = "Update" + c.VisibleIndex;
+                                        link.Properties.Text = "Update";
+                                        link.ClientVisible = false;
+                                        link.Properties.ClientSideEvents.Click = "function(s,e){UpdateGrid();}";
+
+                                    }).Render(); ViewContext.Writer.Write("<br/>");
+                                    @Html.DevExpress().HyperLink(link => {
+                                        link.Name = "Cancel" + c.VisibleIndex;
+                                        link.Properties.Text = "Cancel";
+                                        link.ClientVisible = false;
+                                        link.Properties.ClientSideEvents.Click = "OnCancelClick";
+
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td><td width='25%'>");
+                                    @Html.DevExpress().CheckBox(check => {
+                                        check.Name = "CheckCanSpeakReceived" + c.VisibleIndex;
+                                        check.Properties.ValueType = typeof(bool);
+                                        check.Checked = (bool)DataBinder.Eval(c.DataItem, "CanSpeakReceived");
+                                        check.ClientEnabled = false;
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td><td width='25%'>");
+                                    @Html.DevExpress().CheckBox(check => {
+                                        check.Name = "CheckCanWriteReceived" + c.VisibleIndex;
+                                        check.Properties.ValueType = typeof(bool);
+                                        check.Checked = (bool)DataBinder.Eval(c.DataItem, "CanWriteReceived");
+                                        check.ClientEnabled = false;
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td><td width='25%'>");
+                                    @Html.DevExpress().CheckBox(check => {
+                                        check.Name = "CheckCanUnderstandReceived" + c.VisibleIndex;
+                                        check.Properties.ValueType = typeof(bool);
+                                        check.Checked = (bool)DataBinder.Eval(c.DataItem, "CanUnderstandReceived");
+                                        check.ClientEnabled = false;
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td></tr><tr><td width='25%'>");
+                                    @Html.DevExpress().CheckBox(check => {
+                                        check.Name = "CheckCanSpeakExpressed" + c.VisibleIndex;
+                                        check.Properties.ValueType = typeof(bool);
+                                        check.Checked = (bool)DataBinder.Eval(c.DataItem, "CanSpeakExpressed");
+                                        check.ClientEnabled = false;
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td><td width='25%'>");
+                                    @Html.DevExpress().CheckBox(check => {
+                                        check.Name = "CheckCanWriteExpressed" + c.VisibleIndex;
+                                        check.Properties.ValueType = typeof(bool);
+                                        check.Checked = (bool)DataBinder.Eval(c.DataItem, "CanWriteExpressed");
+                                        check.ClientEnabled = false;
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td><td width='25%'>");
+                                    @Html.DevExpress().CheckBox(check => {
+                                        check.Name = "CheckCanUnderstandExpressed" + c.VisibleIndex;
+                                        check.Properties.ValueType = typeof(bool);
+                                        check.Checked = (bool)DataBinder.Eval(c.DataItem, "CanUnderstandExpressed");
+                                        check.ClientEnabled = false;
+                                    }).Render();
+                                    ViewContext.Writer.Write("</td></tr></table>");
+                                });
+
+                            }).Bind(Model).GetHtml()
+

@@ -1,0 +1,15 @@
+@model System.Collections.IEnumerable
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .myTable {
+        width: 100%;
+        text-align: center;
+    }
+</style>
+@* DXCOMMENT - Check the client-side implementation details in the  CustomEditing.js file *@
+<script src="~/Scripts/CustomEditing.js"></script>
+<h2>Index</h2>
+@Html.Partial("GridViewPartial", Model)

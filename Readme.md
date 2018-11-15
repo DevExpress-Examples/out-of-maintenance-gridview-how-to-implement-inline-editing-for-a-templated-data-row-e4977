@@ -1,3 +1,12 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [HomeController.cs](./CS/WebSite/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/WebSite/Controllers/HomeController.vb))
+* [Person.cs](./CS/WebSite/Models/Person.cs) (VB: [Person.vb](./VB/WebSite/Models/Person.vb))
+* [CustomEditing.js](./CS/WebSite/Scripts/CustomEditing.js) (VB: [CustomEditing.js](./VB/WebSite/Scripts/CustomEditing.js))
+* [GridViewPartial.cshtml](./CS/WebSite/Views/Home/GridViewPartial.cshtml)
+* [Index.cshtml](./CS/WebSite/Views/Home/Index.cshtml)
+<!-- default file list end -->
 # GridView - How to implement inline editing for a templated data row
 
 

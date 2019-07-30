@@ -9,7 +9,7 @@
 <!-- default file list end -->
 # GridView - How to implement inline editing for a templated data row
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e4977)**
+**[[Run Online]](https://codecentral.devexpress.com/e4977/)**
 <!-- run online end -->
 
 
